@@ -38,6 +38,7 @@ import java.util.concurrent.Executors;
 import android.util.Base64;
 
 
+
 public class Register extends AppCompatActivity {
 
     private static final int CAMERA_PERMISSION_CODE = 100;
@@ -336,8 +337,8 @@ public class Register extends AppCompatActivity {
                 // El campo de cuenta IBAN debe ir vacío para inquilino
                 cuentaiban = "";
             }
-            if (!validatePassword(password)) {
-                Toast.makeText(Register.this, "La contraseña no cumple con los requisitos mínimos.", Toast.LENGTH_SHORT).show();
+            if (!RegisterUtils.validatePassword(password)) {
+                Toast.makeText(this, "La contraseña no cumple con los requisitos.", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (!password.equals(confirmPassword)) {
@@ -345,8 +346,8 @@ public class Register extends AppCompatActivity {
                 return;
             }
 
-            if (!isVisaOrMastercard(cardnumber)) {
-                Toast.makeText(Register.this, "El número de tarjeta no es válido. Debe ser Visa o Mastercard.", Toast.LENGTH_SHORT).show();
+            if (!RegisterUtils.isVisaOrMastercard(cardnumber)) {
+                Toast.makeText(this, "El número de tarjeta no es válido.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -639,19 +640,10 @@ public class Register extends AppCompatActivity {
 
     // Métodos adicionales (openGallery, checkAndRequestCameraPermission, openCamera, etc.) permanecen sin cambios
 
-    private boolean isVisaOrMastercard(String cardNumber) {
-        if (cardNumber.length() == 16) {
-            if (cardNumber.startsWith("4")) {
-                return true; // Es Visa
-            } else if (cardNumber.startsWith("51") || cardNumber.startsWith("52") ||
-                    cardNumber.startsWith("53") || cardNumber.startsWith("54") || cardNumber.startsWith("55")) {
-                return true; // Es Mastercard
-            }
-        }
-        return false;
-    }
 
-    public boolean validatePassword(String password) {
+
+
+    /*public boolean validatePassword(String password) {
         if (password.length() < 8) {
             return false;
         }
@@ -674,6 +666,8 @@ public class Register extends AppCompatActivity {
 
         return typeCount >= 2;
     }
+    */
+
 
     // Método para verificar si el username contiene palabras prohibidas
     private boolean containsRestrictedWords(String username) {
