@@ -42,7 +42,7 @@ import java.util.ArrayList;
 public class ReserveHouseActivity extends DialogFragment {
     private String houseId, userLogged, checkInDate, checkOutDate;
     private TextView textViewSelectedDates;
-    private List<Long> disabledDays = new ArrayList<>();
+    public List<Long> disabledDays = new ArrayList<>();
 
     public static ReserveHouseActivity newInstance(String houseId, String userLogged) {
         ReserveHouseActivity fragment = new ReserveHouseActivity();
@@ -171,7 +171,7 @@ public class ReserveHouseActivity extends DialogFragment {
                 .show();
     }
 
-    private boolean isDateBlocked(String checkIn, String checkOut) {
+    public boolean isDateBlocked(String checkIn, String checkOut) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             long start = sdf.parse(checkIn).getTime();
@@ -179,12 +179,12 @@ public class ReserveHouseActivity extends DialogFragment {
 
             for (long date = start; date <= end; date += 86400000) {
                 if (disabledDays.contains(date)) {
-                    Log.d("Reserva", "⛔ Fecha bloqueada detectada: " + sdf.format(new Date(date)));
+                    //Log.d("Reserva", "⛔ Fecha bloqueada detectada: " + sdf.format(new Date(date)));
                     return true; // Encontró una fecha bloqueada
                 }
             }
         } catch (java.text.ParseException e) {
-            Log.e("Reserva", "❌ Error al verificar fechas bloqueadas", e);
+            //Log.e("Reserva", "❌ Error al verificar fechas bloqueadas", e);
         }
         return false;
     }
