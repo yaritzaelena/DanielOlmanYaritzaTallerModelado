@@ -1,4 +1,4 @@
-name: TutorialCIOlman
+name: Android CI
 
 on:
   push:
@@ -10,7 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout del código con historial completo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Asegura que trae todos los archivos del repositorio
+
+      - name: Verificar si gradlew existe
+        run: ls -l
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -18,9 +27,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
@@ -30,14 +36,8 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
+          fetch-depth: 0  # Asegura que trae todos los archivos del repositorio
 
       - name: Run unit tests
         run: ./gradlew test --no-daemon
-
