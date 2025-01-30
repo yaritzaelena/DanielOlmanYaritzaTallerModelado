@@ -15,8 +15,15 @@ jobs:
         with:
           fetch-depth: 0  # Asegura que trae todos los archivos del repositorio
 
-      - name: Verificar si gradlew existe
+      - name: Verificar archivos en el repositorio
         run: ls -l
+
+      - name: Instalar Gradle si no está presente
+        run: |
+          if [ ! -f gradlew ]; then
+            echo "gradlew no encontrado, generando wrapper..."
+            gradle wrapper
+          fi
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
