@@ -1,0 +1,41 @@
+name: TestCI
+
+on:
+  push:
+    branches: [ "OlmanPruebasUnitarias" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Verificar archivos en el repositorio
+        run: ls -l
+
+      - name: Configurar Gradle Wrapper si no existe
+        working-directory: MiPrimerAplicacion
+        run: |
+          if [ ! -f gradlew ]; then
+            echo "gradlew no encontrado, generando wrapper..."
+            gradle wrapper
+          fi
+        continue-on-error: true  # Evita fallos en caso de que no pueda generar el wrapper
+
+      - name: Dar permisos de ejecución a gradlew
+        working-directory: MiPrimerAplicacion
+        run: chmod +x gradlew
+
+      - name: Compilar el proyecto con Gradle
+        working-directory: MiPrimerAplicacion
+        run: ./gradlew assembleDebug --no-daemon
+
