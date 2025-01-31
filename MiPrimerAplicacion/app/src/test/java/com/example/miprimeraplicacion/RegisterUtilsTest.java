@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public clas RegisterUtilsTest {
+public class RegisterUtilsTest {
 
     // Pruebas para isVisaOrMastercard
     @Test
@@ -38,6 +38,6 @@ public clas RegisterUtilsTest {
 
     @Test
     public void Test3ValidatePassword() {
-        assertTrue(RegisterUtils.validatePassword("12345678")); // Solo letras, menos de 8 caracteres
+        assertFalse(RegisterUtils.validatePassword("12345678")); // Solo letras, menos de 8 caracteres
     }
 }
