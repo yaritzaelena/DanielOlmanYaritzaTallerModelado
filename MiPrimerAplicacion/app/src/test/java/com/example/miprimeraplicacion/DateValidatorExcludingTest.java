@@ -14,16 +14,16 @@ public class DateValidatorExcludingTest {
         List<Long> disabledDays = Arrays.asList(1700000000000L, 1800000000000L); // Ejemplo de fechas bloqueadas
         validator = new DateValidatorExcluding(disabledDays);
     }
-    /*
+    
     @Test
     public void testIsValid_ValidDate() {
         assertTrue(validator.isValid(1600000000000L)); // Fecha que no está en la lista
-    }*/
-
+    }
+    /*
     @Test
     public void testIsValid_ValidDate() {
         assertFalse(validator.isValid(1600000000000L)); // Este fallo es intencional
-    }
+    }*/
 
 
     @Test
