@@ -15,7 +15,7 @@ public class RegisterUtils {
         return false;
     }
 
-    public boolean validatePassword(String password) {
+    public static boolean validatePassword(String password) {
         if (password.length() < 8) {
             return false;
         }
