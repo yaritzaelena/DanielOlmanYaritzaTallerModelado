@@ -30,6 +30,7 @@ public class DateValidatorExcludingTest {
     public void testIsValid_InvalidDate() {
         assertFalse(validator.isValid(1700000000000L)); // Fecha bloqueada
     }
+    
 
     @Test
     public void testIsValid_EmptyList() {
