@@ -1,10 +1,10 @@
-name: DanielCI
+name: TestCIDaniel
 
 on:
-  push: 
-    branches: [ "DanielPruebasUnitarias" ]
+  push:
+    branches: [ "main", "DanielPruebasUnitarias" ]
   pull_request:
-    branches: ["DanielPruebasUnitarias" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -63,7 +63,6 @@ jobs:
             echo "ERROR: gradlew no encontrado. Agrega el wrapper al repositorio."
             exit 1
           fi
-
       - name: Dar permisos de ejecución a gradlew
         working-directory: MiPrimerAplicacion
         run: chmod +x gradlew
