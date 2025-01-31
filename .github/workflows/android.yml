@@ -2,9 +2,9 @@ name: YaritzaCI
 
 on:
   push: 
-    branches: [ "main" , "YaritzaPruebasUnitarias" ]
+    branches: [ "YaritzaPruebasUnitarias" ]
   pull_request:
-    branches: [ "main" ]
+    branches: ["YaritzaPruebasUnitarias" ]
 
 jobs:
   build:
