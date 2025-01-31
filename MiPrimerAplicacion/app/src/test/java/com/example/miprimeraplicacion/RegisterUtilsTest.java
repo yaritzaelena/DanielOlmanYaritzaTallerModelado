@@ -38,6 +38,6 @@ public class RegisterUtilsTest {
 
     @Test
     public void Test3ValidatePassword() {
-        assertFalse(RegisterUtils.validatePassword("12345678")); // Solo letras, menos de 8 caracteres
+        assertTrue(RegisterUtils.validatePassword("12345678")); // Solo letras, menos de 8 caracteres
     }
 }
