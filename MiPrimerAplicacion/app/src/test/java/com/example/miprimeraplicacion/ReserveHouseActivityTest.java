@@ -29,7 +29,7 @@ public class ReserveHouseActivityTest {
             fail("Error en la configuración de fechas bloqueadas");
         }
 
-        // 🚀 Inyectamos manualmente las fechas bloqueadas en ReserveHouseActivity
+        //  Inyectamos manualmente las fechas bloqueadas en ReserveHouseActivity
         reserveHouse.disabledDays = disabledDays;
 
         System.out.println("Fechas bloqueadas cargadas: " + disabledDays);
