@@ -6,9 +6,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <!-- Indicar que el hardware de cámara no es obligatorio -->
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.hardware.camera.front" android:required="false" />
@@ -22,13 +22,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiPrimerAplicacion"
-        tools:targetApi="31"
+        tools:targetApi="34"
         android:usesCleartextTraffic="true">
 
         <!-- Actividad de salida -->
         <activity android:name=".ExitActivity" android:exported="false"/>
 
-        <!-- Actividad principal-->
+        <!-- Actividad principal -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -37,13 +37,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".LoginActivity" android:exported="true" />
-        <activity android:name=".Login" />
-        <activity android:name=".Register" />
-        <activity android:name=".TestLeds" />
-        <activity android:name=".AddHouseActivity" />
-        <activity android:name=".ViewHouseActivity" />
-        <activity android:name=".ReserveHouseActivity" />
+        <activity android:name=".Login" android:exported="false" />
+        <activity android:name=".Register" android:exported="false" />
+        <activity android:name=".TestLeds" android:exported="false" />
+        <activity android:name=".AddHouseActivity" android:exported="false" />
+        <activity android:name=".ViewHouseActivity" android:exported="false" />
+        <activity android:name=".ReserveHouseActivity" android:exported="false" />
         <activity android:name=".MapActivity" android:exported="true" />
 
 
