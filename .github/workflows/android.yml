@@ -33,7 +33,7 @@ jobs:
         continue-on-error: true  # Evita fallos en caso de que no pueda generar el wrapper
 
       - name: Dar permisos de ejecución a gradlew
-        run: chmod +x gradlew
+        run: chmod +x MiPrimerAplicacion/gradlew
 
       - name: Compilar el proyecto con Gradle
         run: ./gradlew build --no-daemon
