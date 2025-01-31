@@ -1,9 +1,6 @@
 name: TestCIDaniel
 
 on:
-  push:name: TestCIDaniel
-
-on:
   push:
     branches: [ "develop" , "DanielPruebasUnitarias" ]
   pull_request:
