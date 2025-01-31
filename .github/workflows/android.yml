@@ -22,21 +22,24 @@ jobs:
           cache: gradle
 
       - name: Verificar archivos en el repositorio
-        run: ls -l
+        run: ls -l MiPrimerAplicacion
 
       - name: Configurar Gradle Wrapper si no existe
+        working-directory: MiPrimerAplicacion
         run: |
           if [ ! -f gradlew ]; then
             echo "gradlew no encontrado, generando wrapper..."
             gradle wrapper
           fi
-        continue-on-error: true  # Evita fallos en caso de que no pueda generar el wrapper
+        continue-on-error: true
 
       - name: Dar permisos de ejecución a gradlew
-        run: chmod +x MiPrimerAplicacion/gradlew
+        working-directory: MiPrimerAplicacion
+        run: chmod +x gradlew
 
       - name: Compilar el proyecto con Gradle
-        run: MiPrimerAplicacion/gradlew build --no-daemon
+        working-directory: MiPrimerAplicacion
+        run: ./gradlew build --no-daemon
 
   test:
     runs-on: ubuntu-latest
@@ -54,6 +57,7 @@ jobs:
           cache: gradle
 
       - name: Verificar si gradlew existe
+        working-directory: MiPrimerAplicacion
         run: |
           if [ ! -f gradlew ]; then
             echo "ERROR: gradlew no encontrado. Agrega el wrapper al repositorio."
@@ -61,12 +65,15 @@ jobs:
           fi
 
       - name: Dar permisos de ejecución a gradlew
-        run: chmod +x MiPrimerAplicacion/gradlew
+        working-directory: MiPrimerAplicacion
+        run: chmod +x gradlew
 
       - name: Ejecutar pruebas unitarias con Gradle
+        working-directory: MiPrimerAplicacion
         run: ./gradlew test
 
       - name: Ejecutar pruebas unitarias específicas
+        working-directory: MiPrimerAplicacion
         run: ./gradlew testDebugUnitTest
 
       - name: Generar reporte de pruebas
