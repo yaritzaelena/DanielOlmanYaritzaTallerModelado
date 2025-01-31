@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public clas RegisterUtilsTest {
+public class RegisterUtilsTest {
 
     // Pruebas para isVisaOrMastercard
     @Test
