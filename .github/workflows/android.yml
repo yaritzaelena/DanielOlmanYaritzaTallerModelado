@@ -61,7 +61,7 @@ jobs:
           fi
 
       - name: Dar permisos de ejecución a gradlew
-        run: chmod +x gradlew
+        run: chmod +x MiPrimerAplicacion/gradlew
 
       - name: Ejecutar pruebas unitarias con Gradle
         run: ./gradlew test
