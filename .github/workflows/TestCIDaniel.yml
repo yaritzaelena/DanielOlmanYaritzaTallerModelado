@@ -2,9 +2,9 @@ name: TestCIDaniel
 
 on:
   push:
-    branches: [ "develop" , "DanielPruebasUnitarias" ]
+    branches: [ "main" , "DanielPruebasUnitarias" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -49,3 +49,4 @@ jobs:
     - name: Android Test Report
       uses: asadmansr/android-test-report-action@v1.2.0
       if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
+      
